@@ -10,7 +10,6 @@ RUN apt-get -y update && \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         git \
-        iproute2 \
         libicu-dev && \
     rm -rf /var/lib/apt/lists/*
 
