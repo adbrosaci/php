@@ -8,6 +8,7 @@ RUN apt-get -y update \
         libfreetype6-dev \
         libicu-dev \
         libjpeg-dev \
+        libldap2-dev \
         libpng-dev \
         libwebp-dev \
         libxml2-dev \
@@ -31,5 +32,8 @@ RUN docker-php-ext-install -j$(nproc) \
 
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install -j$(nproc) gd
+
+RUN docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
+    && docker-php-ext-install -j$(nproc) ldap
 
 WORKDIR /var/www/html
