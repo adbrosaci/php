@@ -1,4 +1,4 @@
-FROM php:7.4
+FROM php:8.0
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
@@ -26,7 +26,6 @@ RUN docker-php-ext-install -j$(nproc) \
         mysqli \
         pdo_mysql \
         soap \
-        xmlrpc \
         xsl \
         zip
 
