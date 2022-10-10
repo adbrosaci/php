@@ -1,4 +1,4 @@
-FROM php:7.4
+FROM php:7.3
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
@@ -30,7 +30,7 @@ RUN docker-php-ext-install -j$(nproc) \
         xsl \
         zip
 
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
+RUN docker-php-ext-configure gd --with-freetype-dir --with-jpeg-dir --with-webp-dir \
     && docker-php-ext-install -j$(nproc) gd
 
 RUN docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
