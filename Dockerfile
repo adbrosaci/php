@@ -15,6 +15,7 @@ RUN apt-get -y update \
         libxslt1-dev \
         libzip-dev \
         zip \
+        mongo
     && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-install -j$(nproc) \
