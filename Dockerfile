@@ -15,6 +15,7 @@ RUN apt-get -y update \
         libxslt1-dev \
         libzip-dev \
         zip \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-install -j$(nproc) \
@@ -28,6 +29,8 @@ RUN docker-php-ext-install -j$(nproc) \
         soap \
         xsl \
         zip
+
+RUN pecl install mongodb && docker-php-ext-enable mongodb
 
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install -j$(nproc) gd
