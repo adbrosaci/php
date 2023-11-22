@@ -1,6 +1,7 @@
-FROM php:7.3
+FROM php:5.6
+RUN echo "deb http://archive.debian.org/debian stretch main" > /etc/apt/sources.list
 
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:1 /usr/bin/composer /usr/bin/composer
 
 RUN apt-get -y update \
     && apt-get install -y \
