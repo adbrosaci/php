@@ -10,6 +10,7 @@ RUN apt-get -y update \
         libjpeg-dev \
         libldap2-dev \
         libpng-dev \
+    	librabbitmq-dev \
         libwebp-dev \
         libxml2-dev \
         libxslt1-dev \
@@ -31,6 +32,7 @@ RUN docker-php-ext-install -j$(nproc) \
         zip
 
 RUN pecl install mongodb && docker-php-ext-enable mongodb
+RUN pecl install amqp && docker-php-ext-enable amqp
 
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install -j$(nproc) gd
