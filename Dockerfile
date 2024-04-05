@@ -1,4 +1,6 @@
-FROM php:8.2
+ARG PHP_VERSION
+
+FROM php:$PHP_VERSION
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
