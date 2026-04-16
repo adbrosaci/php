@@ -1,4 +1,4 @@
-ARG PHP_VERSION=8.4
+ARG PHP_VERSION=8.5
 
 FROM php:$PHP_VERSION
 
@@ -26,12 +26,12 @@ RUN docker-php-ext-install -j$(nproc) \
         calendar \
         exif \
         intl \
-        opcache \
         mysqli \
         pdo_mysql \
         soap \
         xsl \
-        zip
+        zip \
+    && (docker-php-ext-enable opcache 2>/dev/null || true)
 
 RUN pecl install mongodb && docker-php-ext-enable mongodb
 RUN pecl install amqp && docker-php-ext-enable amqp
